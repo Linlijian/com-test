@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คลังข้อสอบออนไลน์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        /* สไตล์กล่องกลุ่มแบบกดพับได้ */
+        .group-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .group-header {
+            padding: 18px 20px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2c3e50;
+            background-color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .group-header:hover {
+            background-color: #f8f9fa;
+        }
+        /* ลูกศรชี้ขึ้น-ลง */
+        .arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .group-card.active .arrow {
+            transform: rotate(180deg);
+        }
+        /* กล่องซ่อนรายการข้อสอบย่อย */
+        .exam-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fafbfc;
+            border-top: 1px solid #eee;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .group-card.active .exam-list {
+            max-height: 1000px; /* ขยายความสูงเมื่อกดเปิด */
+            padding: 15px 20px 20px 20px;
+        }
+        .exam-btn {
+            display: block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background-color 0.2s;
+        }
+        .exam-btn:hover {
+            background-color: #2980b9;
+        }
+        .badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.85rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📚 คลังข้อสอบจำลองออนไลน์</h1>
+        <div id="exam-container">
+            <!-- ข้อมูลจะถูกโหลดเข้ามาแสดงที่นี่ -->
+        </div>
+    </div>
+
+    <script>
+        fetch('exams.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('exam-container');
+                
+                data.groups.forEach(group => {
+                    const groupCard = document.createElement('div');
+                    groupCard.className = 'group-card';
+                    
+                    // ส่วนหัวของกลุ่ม (กดเพื่อพับ/กาง)
+                    const groupHeader = document.createElement('div');
+                    groupHeader.className = 'group-header';
+                    
+                    const titleSpan = document.createElement('span');
+                    titleSpan.innerHTML = `${group.groupName} <span class="badge">${group.totalQuestions} ข้อ</span>`;
+                    
+                    const arrowSpan = document.createElement('span');
+                    arrowSpan.className = 'arrow';
+                    arrowSpan.innerHTML = '▼';
+                    
+                    groupHeader.appendChild(titleSpan);
+                    groupHeader.appendChild(arrowSpan);
+                    groupCard.appendChild(groupHeader);
+                    
+                    // รายชื่อชุดย่อยด้านใน
+                    const examList = document.createElement('div');
+                    examList.className = 'exam-list';
+                    
+                    group.subExams.forEach(exam => {
+                        const btn = document.createElement('a');
+                        btn.className = 'exam-btn';
+                        btn.href = exam.url;
+                        btn.target = '_blank';
+                        btn.textContent = exam.title;
+                        examList.appendChild(btn);
+                    });
+                    
+                    groupCard.appendChild(examList);
+                    
+                    // ฟังก์ชันกดสลับเปิด-ปิด
+                    groupHeader.addEventListener('click', () => {
+                        groupCard.classList.toggle('active');
+                    });
+                    
+                    container.appendChild(groupCard);
+                });
+            })
+            .catch(error => console.error('ไม่สามารถโหลดข้อมูลข้อสอบได้:', error));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "groups": [
+    {
+      "groupName": "ข้อสอบทดสอบความรู้ก่อนสอบบรรจุ จำลองข้อสอบจริง ชุดที่ 1",
+      "totalQuestions": 100,
+      "subExams": [
+        { "title": "ชุดย่อยที่ 1 (ข้อ 1 - 10)", "url": "https://docs.google.com/forms/d/13osKNUw7C2CeEtBBCIfPiTafCKUSlFk_ZEAv8z09TaQ/edit" },
+        { "title": "ชุดย่อยที่ 2 (ข้อ 11 - 20)", "url": "https://docs.google.com/forms/d/1iVtwCZy6zEgkZeyOwEdN5xTtdggk_p9kW5ZBeWgHxb4/edit" },
+        { "title": "ชุดย่อยที่ 3 (ข้อ 21 - 30)", "url": "https://docs.google.com/forms/d/1ao3CDHULE8CLvWrOEZiSqmM09HHzmonBLb7unhFCWVM/edit" },
+        { "title": "ชุดย่อยที่ 4 (ข้อ 31 - 40)", "url": "https://docs.google.com/forms/d/195C8WXca5tTzC7r03WqKK7SYdlpkbstC1Qx5Uh8FgqU/edit" },
+        { "title": "ชุดย่อยที่ 5 (ข้อ 41 - 50)", "url": "https://docs.google.com/forms/d/1YuRGQAV9VddHIh1RQf2PUudex6qXek5WhNw3Z26qaDo/edit" },
+        { "title": "ชุดย่อยที่ 6 (ข้อ 51 - 60)", "url": "https://docs.google.com/forms/d/1qx6ep9mhea89x3K_BMMtOKsFWAli7pb8t-DNA6NQRuo/edit" },
+        { "title": "ชุดย่อยที่ 7 (ข้อ 61 - 70)", "url": "https://docs.google.com/forms/d/137ZAMAdY4afu_NPFYx2g-vXxy33paxjOVKjgtOB5Vak/edit" },
+        { "title": "ชุดย่อยที่ 8 (ข้อ 71 - 80)", "url": "https://docs.google.com/forms/d/1aFnBMGV_bYkX3kO67QNfx6eyociOqV5KOy_DOTZ6YEM/edit" },
+        { "title": "ชุดย่อยที่ 9 (ข้อ 81 - 90)", "url": "https://docs.google.com/forms/d/1qkZwZRBSqhAxIisV-sTfsKQv_PDSIeTumdUJQsLDUiM/edit" },
+        { "title": "ชุดย่อยที่ 10 (ข้อ 91 - 100)", "url": "https://docs.google.com/forms/d/1woDngUj9U8z5FBWXiUaO4GKT5GLbmyEz80s13MxHOX8/edit" }
+      ]
+    }
+  ]
+}
